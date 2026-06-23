@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head><title>StackLens Icon Generator</title></head>
+<body style="background:#0f1117;color:#e4e6ed;font-family:sans-serif;padding:32px;">
+<h1>StackLens Icon Generator</h1>
+<p>Click to generate and download extension icons.</p>
+<canvas id="canvas" width="128" height="128"></canvas>
+<br><br>
+<button id="gen16" style="padding:8px 16px;background:#6c63ff;color:white;border:none;border-radius:6px;cursor:pointer;">Generate 16x16</button>
+<button id="gen32" style="padding:8px 16px;background:#6c63ff;color:white;border:none;border-radius:6px;cursor:pointer;">Generate 32x32</button>
+<button id="gen48" style="padding:8px 16px;background:#6c63ff;color:white;border:none;border-radius:6px;cursor:pointer;">Generate 48x48</button>
+<button id="gen128" style="padding:8px 16px;background:#6c63ff;color:white;border:none;border-radius:6px;cursor:pointer;">Generate 128x128</button>
+<button id="genAll" style="padding:8px 16px;background:#22c55e;color:white;border:none;border-radius:6px;cursor:pointer;">Generate All Sizes</button>
+<script>
+function drawIcon(ctx, size) {
+  const cx = size / 2, cy = size / 2;
+  ctx.clearRect(0, 0, size, size);
+
+  // Background circle
+  const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, cx * 0.7);
+  grad.addColorStop(0, '#6c63ff');
+  grad.addColorStop(1, '#4a3fcf');
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.arc(cx, cy, cx * 0.7, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Concentric rings
+  ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+  ctx.lineWidth = Math.max(1, size * 0.04);
+  for (let r = 0.25; r <= 0.55; r += 0.1) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, cx * r, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+
+  // Center dot
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  ctx.beginPath();
+  ctx.arc(cx, cy, cx * 0.12, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Letter S
+  ctx.fillStyle = 'rgba(255,255,255,0.15)';
+  ctx.font = `bold ${size * 0.4}px sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('S', cx, cy + 1);
+}
+
+function downloadIcon(size) {
+  const canvas = document.getElementById('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  drawIcon(ctx, size);
+  const link = document.createElement('a');
+  link.download = `icon${size}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+document.getElementById('gen16').onclick = () => downloadIcon(16);
+document.getElementById('gen32').onclick = () => downloadIcon(32);
+document.getElementById('gen48').onclick = () => downloadIcon(48);
+document.getElementById('gen128').onclick = () => downloadIcon(128);
+document.getElementById('genAll').onclick = () => {
+  [16, 32, 48, 128].forEach(s => downloadIcon(s));
+};
+
+// Preview
+drawIcon(document.getElementById('canvas').getContext('2d'), 128);
+</script>
+</body>
+</html>
