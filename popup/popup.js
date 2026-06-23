@@ -132,7 +132,8 @@
         if (currentHostname === hostname) renderCurrentSite();
       }
     } catch (e) {
-      showToast('Screenshot failed: ' + e.message);
+      const isFirefox = navigator.userAgent.includes('Firefox');
+      showToast(isFirefox ? 'Screenshot: not supported in Firefox' : 'Screenshot failed: ' + e.message);
     }
   }
 

@@ -164,11 +164,12 @@ All analysis runs in the isolated content script world. Data is persisted via `c
 
 | Browser | Status |
 |---------|--------|
-| Chrome 120+ | ✅ Primary target |
-| Edge 120+ | ✅ Tested |
-| Brave 1.60+ | ✅ Tested |
-| Opera 100+ | ✅ Should work |
-| Firefox 109+ | ⚠️ Partial — screenshot capture (`captureVisibleTab`) and some APIs differ |
+| Chrome 120+ | ✅ Full support |
+| Edge 120+ | ✅ Full support |
+| Brave 1.60+ | ✅ Full support |
+| Opera 100+ | ✅ Full support |
+| Firefox 109+ | ✅ Full support (screenshot via `captureVisibleTab` not available — feature guarded) |
+| Vivaldi | ✅ Full support (Chromium-based) |
 
 ---
 

@@ -1250,11 +1250,12 @@ Compress-Archive -Path manifest.json, background.js, content, popup, options, sh
 
 | Browser | Version | Status |
 |---------|---------|--------|
-| Chrome | 120+ (MV3 support) | ✅ Primary target |
-| Edge | 120+ (Chromium) | ✅ Tested (same APIs) |
-| Brave | 1.60+ | ✅ Tested (same APIs) |
-| Opera | 100+ | ✅ Should work |
-| Firefox | Not supported | ❌ No MV3, uses different API |
+| Chrome | 120+ (MV3 support) | ✅ Full support |
+| Edge | 120+ (Chromium) | ✅ Full support |
+| Brave | 1.60+ | ✅ Full support |
+| Opera | 100+ | ✅ Full support |
+| Firefox | 109+ | ✅ Full support (screenshot not available — gracefully handled) |
+| Vivaldi | Latest | ✅ Full support (Chromium-based) |
 
 ---
 
