@@ -168,7 +168,7 @@ All analysis runs in the isolated content script world. Data is persisted via `c
 | Edge 120+ | ✅ Tested |
 | Brave 1.60+ | ✅ Tested |
 | Opera 100+ | ✅ Should work |
-| Firefox | ❌ (No MV3 support) |
+| Firefox 109+ | ⚠️ Partial — screenshot capture (`captureVisibleTab`) and some APIs differ |
 
 ---
 
